@@ -7,7 +7,7 @@ from torchvision.models import resnet50, ResNet50_Weights
 
 execution_path = os.getcwd()
 
-# Using the resnet-50 model. ImageAI has 3 other models in the documentation we could test aswell. 
+# Using the resnet-50 model
 prediction = ImageClassification() # create an instance of the ImageClassification class from the ImageAI library
 prediction.setModelTypeAsResNet50() # set the model type that the ImageClassification object will use to ResNet-50
 prediction.setModelPath(os.path.join(execution_path, "resnet50-19c8e357.pth")) # set the path to the model weights file that the ImageClassification object will use

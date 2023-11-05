@@ -7,6 +7,7 @@ from wtforms import SubmitField
 from imagedetection import *
 from PIL import Image
 
+# Initializa Flask App
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.urandom(24)
 app.config["UPLOADED_PHOTOS_DEST"] = "uploads"
@@ -14,6 +15,7 @@ app.config["UPLOADED_PHOTOS_DEST"] = "uploads"
 photos = UploadSet("photos", IMAGES)
 configure_uploads(app, photos)
 
+# Flask form to upload image
 class UploadPhoto(FlaskForm):
 	photo = FileField(
 		validators=[
@@ -23,24 +25,24 @@ class UploadPhoto(FlaskForm):
 	)
 	submit = SubmitField('Upload')
 
+# Send image to uploads folder
 @app.route('/uploads/<filename>')
 def get_file(filename):
 	return send_from_directory(app.config["UPLOADED_PHOTOS_DEST"], filename)
-
 
 @app.route("/", methods=['GET', 'POST'])
 def upload_image():
 	form = UploadPhoto()
 	snake_name = None
-	if form.validate_on_submit():
+	if form.validate_on_submit(): # Check if image was uploaded
 		filename = photos.save(form.photo.data)
 		file_url = url_for('get_file', filename=filename)
 		print(filename)
 		print(file_url)
 		print(os.getcwd())
-		loader = f"{os.getcwd()}{file_url}"
+		loader = f"{os.getcwd()}{file_url}" # Add correct path to image
 		print(loader)
-		snake_name = image_recognition(loader)
+		snake_name = image_recognition(loader) # Run image recognition function in imagedetection.py
 	else:
 		file_url = None
 	if snake_name is not None:
