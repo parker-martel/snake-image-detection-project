@@ -1,4 +1,4 @@
-run thru terminal with 'npm-start' in the flowbite-flask directory
+run thru terminal with 'npm-i' and 'npm-start' in the flowbite-flask directory
 make sure you guys have nodejs and python3 installed 
 
 flask uses the app.py file
