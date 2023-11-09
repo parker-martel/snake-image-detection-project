@@ -1186,6 +1186,10 @@ input:checked + .toggle-bg {
   max-width: 42rem;
 }
 
+.max-w-3xl {
+  max-width: 48rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1408,16 +1412,8 @@ input:checked + .toggle-bg {
   --tw-bg-opacity: 0.5;
 }
 
-.bg-\[url\(\'\/static\/assets\/images\/bg4\.jpg\'\)\] {
-  background-image: url('/static/assets/images/bg4.jpg');
-}
-
 .bg-\[url\(\'\/static\/assets\/images\/bg\.jpg\'\)\] {
   background-image: url('/static/assets/images/bg.jpg');
-}
-
-.bg-\[url\(\'\/static\/assets\/images\/bg\.jpeg\'\)\] {
-  background-image: url('/static/assets/images/bg.jpeg');
 }
 
 .bg-cover {
@@ -1445,14 +1441,14 @@ input:checked + .toggle-bg {
   padding-right: 0.5rem;
 }
 
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 
 .py-10 {

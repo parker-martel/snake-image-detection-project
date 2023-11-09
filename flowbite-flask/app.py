@@ -9,7 +9,7 @@ from imagedetection import *
 # Initializa Flask App
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.urandom(24)
-app.config["UPLOADED_PHOTOS_DEST"] = "uploads"
+app.config["UPLOADED_PHOTOS_DEST"] = "uploads" 
 
 photos = UploadSet("photos", IMAGES)
 configure_uploads(app, photos)
