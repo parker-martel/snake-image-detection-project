@@ -6,17 +6,18 @@ import os
 from torchvision.models import resnet50, ResNet50_Weights
 import pandas as pd
 
-
+# Read in information from snakes csv file to get poisonous data
 dataSet = pd.read_csv('train.csv')
 
 
 execution_path = os.getcwd()
 
-# Using the resnet-50 model
+# Using our own custom trained resnet-50 model
 prediction = CustomImageClassification() # create an instance of the ImageClassification class from the ImageAI library
 prediction.setModelTypeAsResNet50() # set the model type that the ImageClassification object will use to ResNet-50
 #prediction.setModelPath(os.path.join(execution_path, "resnet50-19c8e357.pth")) # set the path to the model weights file that the ImageClassification object will use
 
+# Set our model path
 prediction.setModelPath(os.path.join(execution_path, "resnet50-snakes-test_acc_0.23901_epoch-48.pt"))
 prediction.setJsonPath(os.path.join(execution_path, "snakes_model_classes.json"))
 
@@ -68,17 +69,13 @@ def image_recognition(image):
     for index,row in dataSet.iterrows():
         poisonous = row['poisonous']
         classValue = row['class_id']
-
-
         if classValue == int(predictions[0]):
             if poisonous == 1: 
                 res = "poisonous"
             else:
                 res = "not poisonous"
             break
-    
-    print(res)
-            
+    print(res) 
     return [snake_dict[int(predictions[0])], res]
 
 

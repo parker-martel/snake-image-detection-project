@@ -56,9 +56,6 @@ def upload_image():
 	else:
 		return render_template('index.html', form=form, file_url=file_url)
 
-
-
-
 if __name__ == '__main__':
 	app.run(debug=True, port=5001)
 
