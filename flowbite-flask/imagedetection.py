@@ -4,6 +4,11 @@
 from imageai.Classification.Custom import CustomImageClassification
 import os
 from torchvision.models import resnet50, ResNet50_Weights
+import pandas as pd
+
+
+dataSet = pd.read_csv('train.csv')
+
 
 execution_path = os.getcwd()
 
@@ -52,12 +57,28 @@ snake_dict = {18: "Copperhead", 20: "Coppermouth", 25: "Green Vine Snake", 26: "
 
 def image_recognition(image):
     print(image)
+    res = ""
     predictions, probabilities = prediction.classifyImage(os.path.join(execution_path, image), result_count=5) # call the classifyImage method of the ImageClassification object to classify the snake in the image
     for eachPrediction, eachProbability in zip(predictions, probabilities): # Iterates through the top 5 predictions in order of decreasing probability
         print(eachPrediction , " : " , eachProbability)
     predictions, probabilities = prediction.classifyImage(os.path.join(execution_path, image), result_count=1)
     print(f"\n\nThis snake is: {snake_dict[int(predictions[0])]}\n\n")
     print(snake_dict[int(predictions[0])])
-    return snake_dict[int(predictions[0])]
+    print (dataSet)
+    for index,row in dataSet.iterrows():
+        poisonous = row['poisonous']
+        classValue = row['class_id']
+
+
+        if classValue == int(predictions[0]):
+            if poisonous == 1: 
+                res = "poisonous"
+            else:
+                res = "not poisonous"
+            break
+    
+    print(res)
+            
+    return [snake_dict[int(predictions[0])], res]
 
 

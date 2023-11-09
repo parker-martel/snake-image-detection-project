@@ -34,6 +34,7 @@ def get_file(filename):
 def upload_image():
 	form = UploadPhoto()
 	snake_name = None
+	poisonous = None
 
 	if form.validate_on_submit(): # Check if image was uploaded
 		global prev_image
@@ -47,11 +48,11 @@ def upload_image():
 		print("\n\nLOADER: ", f"{os.getcwd()}{file_url}")
 		loader = f"{os.getcwd()}{file_url}" # Add correct path to image
 		prev_image = loader
-		snake_name = image_recognition(loader) # Run image recognition function in imagedetection.py
+		snake_name,poisonous  = image_recognition(loader) # Run image recognition function in imagedetection.py
 	else:
 		file_url = None
 	if snake_name is not None:
-		return render_template('index.html', form=form, file_url=file_url, snake_name=snake_name)
+		return render_template('index.html', form=form, file_url=file_url, snake_name=snake_name, poisonous=poisonous)
 	else:
 		return render_template('index.html', form=form, file_url=file_url)
 
