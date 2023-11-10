@@ -18,8 +18,8 @@ prediction.setModelTypeAsResNet50() # set the model type that the ImageClassific
 #prediction.setModelPath(os.path.join(execution_path, "resnet50-19c8e357.pth")) # set the path to the model weights file that the ImageClassification object will use
 
 # Set our model path
-prediction.setModelPath(os.path.join(execution_path, "resnet50-snakes-test_acc_0.23901_epoch-48.pt"))
-prediction.setJsonPath(os.path.join(execution_path, "snakes_model_classes.json"))
+prediction.setModelPath(os.path.join(execution_path, "resnet50-train_local3-test_acc_0.42161_epoch-114.pt"))
+prediction.setJsonPath(os.path.join(execution_path, "train_local3_model_classes.json"))
 
 prediction.loadModel() # load the model with the specified model type (ResNet-50) and model weights (from the included .pth file)
 
@@ -41,7 +41,7 @@ snake_dict = {18: "Copperhead", 20: "Coppermouth", 25: "Green Vine Snake", 26: "
               315: "Horseshoe Whip Snake", 319: "Western Hognose Snake", 321: "Southern Hognose Snake", 323: "Green Whip Snake", 
               335: "Night Snake", 338: "Blunthead Tree Snake", 345: "Gray-Banded Kingsnake", 348: "Prairie Kingsnake", 
               352: "Eastern Kingsnake", 360: "Sonoran Mountain Kingsnake", 758 : "Checkered keelback", 755 : "Smooth earth snake", 751 : "Vipera seoanei",
-              747 : "Vipera aspis", 746: "Horned Viper", 741: "Wagler's pit viper", 740: "Bornean keeled green pit viper", 738: "lined snake", 725 : "bamboo pit viper", 701 : "Plains garter snake",
+              747 : "Vipera aspis", 746: "Horned Viper", 741: "Wagler'S pit viper", 740: "Bornean keeled green pit viper", 738: "lined snake", 725 : "bamboo pit viper", 701 : "Plains garter snake",
               699 : "Western ribbon snake",  698 : "Northwestern garter snake", 696 : "Checkered garter snake", 691 : "Black-necked gartersnake",
               690 : "Sierra garter snake", 686 : "Aquatic garter snake", 678 : "Western black-headed snake", 675 : "southwestern blackhead snake",
               674 : "Flat-headed snake", 672 : "Southeastern crowned snake", 656 : "Chicken snake",  652 : "pygmy rattlesnake", 651 : "eastern massasauga",
@@ -71,9 +71,9 @@ def image_recognition(image):
         classValue = row['class_id']
         if classValue == int(predictions[0]):
             if poisonous == 1: 
-                res = "poisonous"
+                res = "Venomous"
             else:
-                res = "not poisonous"
+                res = "Not Venomous"
             break
     print(res) 
     return [snake_dict[int(predictions[0])], res]
