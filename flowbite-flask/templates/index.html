@@ -4,11 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flowbite Flask</title>
+    <title>Snake Identifier</title>
     <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
 </head>
 <body>
-    <h1 class="text-blue-600">Hello, Flask!</h1>
+    <div class="min-h-screen flex justify-center items-center bg-[url('/static/assets/images/bg.jpg')] bg-cover">
+        <div class="flex flex-col space-y-10 justify-center bg-white shadow-xl rounded-xl max-w-3xl mx-auto py-10 px-3 mx-2 my-5 border-2 border-zinc-200 bg-zinc-50">
+            <h2 class="text-4xl md:text-5xl font-semibold text-center px-4">&#128013; Is This Snake Venomous?</h2>
+            <p class="text-gray-600 text-center text-lg">Upload an image to get started!</p>
+            <form method="post" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                {% for error in form.photo.errors %}
+                    <span class="text-red-700">{{ error }}</span>
+                {% endfor %}
+                <div class="flex justify-center items-center">
+                    <div class="">
+                        {{ form.photo(class="form-control rounded-md") }}
+                    </div>
+                    <div class="">
+                        {{ form.submit(class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800") }}
+                    </div>       
+                </div>
+            </form>
+            {% if file_url %}
+              <div class="flex flex-col space-y-5">
+                <div class="flex justify-center">
+                  <img src="{{ file_url }}" class="max-w-3xl rounded-lg max-h-80" alt="">  
+                </div>
+                <div class="flex justify-center">
+                  <h2 class="text-2xl">This snake is: {{snake_name.title()}} </h2>
+                  
+                </div>
+                <h2 class="text-xl font-semibold text-center">{{poisonous.title()}} </h2>
+
+              </div>             
+            {% endif %}
+        </div>
+      </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </body>
 </html>
