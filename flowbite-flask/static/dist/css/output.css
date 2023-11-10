@@ -1175,10 +1175,6 @@ input:checked + .toggle-bg {
   width: 50%;
 }
 
-.w-3\/4 {
-  width: 75%;
-}
-
 .w-4 {
   width: 1rem;
 }
@@ -1189,10 +1185,6 @@ input:checked + .toggle-bg {
 
 .max-w-3xl {
   max-width: 48rem;
-}
-
-.max-w-2xl {
-  max-width: 42rem;
 }
 
 .flex-1 {
@@ -1423,14 +1415,6 @@ input:checked + .toggle-bg {
 
 .bg-\[url\(\'\/static\/assets\/images\/bg\.jpg\'\)\] {
   background-image: url('/static/assets/images/bg.jpg');
-}
-
-.bg-\[url\(\'\/static\/assets\/images\/bg2\.jpg\'\)\] {
-  background-image: url('/static/assets/images/bg2.jpg');
-}
-
-.bg-\[url\(\'\/static\/assets\/images\/snake_bg\.jpg\'\)\] {
-  background-image: url('/static/assets/images/snake_bg.jpg');
 }
 
 .bg-cover {

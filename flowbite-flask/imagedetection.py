@@ -26,7 +26,7 @@ prediction.loadModel() # load the model with the specified model type (ResNet-50
 snake_dict = {18: "Copperhead", 20: "Coppermouth", 25: "Green Vine Snake", 26: "Asian Vine Snake", 
               39: "Glossy Snake", 41: "Black-Headed Python", 48: "Thickhead Ground Snake",
               52: "Lowland Copperhead", 54: "Puff Adder", 57: "Gaboon Viper", 
-              60: "Boa constrictor", 65: "Pecos Rat Snake", 71: "Brown tree snake", 
+              60: "Boa constrictor", 65: "Trans-Pecos Rat Snake", 71: "Brown tree snake", 
               73: "Kelung cat snake", 83: "Kelung Cat Snake", 87: "Fer-de-lance", 
               88: "Common Lancehead", 99: "Banded Krait", 110: "Eastern Worm Snake", 111: "Western Worm Snake", 
               113: "Rhombic Night Adder", 114: "Scarlet Snake", 122: "Rubber Boa", 135: "Golden Tree Snake", 
