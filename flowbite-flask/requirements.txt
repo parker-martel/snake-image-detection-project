@@ -16,3 +16,4 @@ tensorflow-macos==2.14.0
 pandas==2.1.2
 tzdata==2023.3
 pytz==2023.3.post1
+python-dotenv==1.0.0

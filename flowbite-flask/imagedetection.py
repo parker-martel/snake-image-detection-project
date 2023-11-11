@@ -3,6 +3,7 @@
 # add add all these files to the website
 from imageai.Classification.Custom import CustomImageClassification
 import os
+from snakedescription import snakeDescription
 from torchvision.models import resnet50, ResNet50_Weights
 import pandas as pd
 
@@ -63,9 +64,14 @@ def image_recognition(image):
     for eachPrediction, eachProbability in zip(predictions, probabilities): # Iterates through the top 5 predictions in order of decreasing probability
         print(eachPrediction , " : " , eachProbability)
     predictions, probabilities = prediction.classifyImage(os.path.join(execution_path, image), result_count=1)
-    print(f"\n\nThis snake is: {snake_dict[int(predictions[0])]}\n\n")
-    print(snake_dict[int(predictions[0])])
-    print (dataSet)
+    # print(f"\n\nThis snake is: {snake_dict[int(predictions[0])]}\n\n")
+    # print(snake_dict[int(predictions[0])])
+    # print (dataSet)
+
+    # running Description code.
+    description = snakeDescription(snake_dict[int(predictions[0])])
+
+    #grabbing poisonous value from csv.
     for index,row in dataSet.iterrows():
         poisonous = row['poisonous']
         classValue = row['class_id']
@@ -76,6 +82,6 @@ def image_recognition(image):
                 res = "Not Venomous"
             break
     print(res) 
-    return [snake_dict[int(predictions[0])], res]
+    return [snake_dict[int(predictions[0])], res, description]
 
 

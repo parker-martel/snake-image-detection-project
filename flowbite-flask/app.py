@@ -48,11 +48,11 @@ def upload_image():
 		print("\n\nLOADER: ", f"{os.getcwd()}{file_url}")
 		loader = f"{os.getcwd()}{file_url}" # Add correct path to image
 		prev_image = loader
-		snake_name,poisonous  = image_recognition(loader) # Run image recognition function in imagedetection.py
+		snake_name,poisonous,description  = image_recognition(loader) # Run image recognition function in imagedetection.py
 	else:
 		file_url = None
 	if snake_name is not None:
-		return render_template('index.html', form=form, file_url=file_url, snake_name=snake_name, poisonous=poisonous)
+		return render_template('index.html', form=form, file_url=file_url, snake_name=snake_name, poisonous=poisonous, description =description)
 	else:
 		return render_template('index.html', form=form, file_url=file_url)
 
