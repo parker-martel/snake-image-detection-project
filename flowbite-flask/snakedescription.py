@@ -11,7 +11,7 @@ def snakeDescription(snake):
 
     # Define the conversation for the chat-based API
     conversation = [
-        {"role": "user", "content": f"Generate a summary of the {snake}. include where its from. 2 sentences."},
+        {"role": "user", "content": f"Generate a summary of the {snake}. 2 sentences."},
     ]
 
 

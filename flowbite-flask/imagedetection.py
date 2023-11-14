@@ -59,7 +59,9 @@ snake_dict = {18: "Copperhead", 20: "Coppermouth", 25: "Green Vine Snake", 26: "
 
 def image_recognition(image):
     print(image)
-    res = ""
+    resPois = ""
+    resCountry = ""
+    resScientific = ""
     predictions, probabilities = prediction.classifyImage(os.path.join(execution_path, image), result_count=5) # call the classifyImage method of the ImageClassification object to classify the snake in the image
     for eachPrediction, eachProbability in zip(predictions, probabilities): # Iterates through the top 5 predictions in order of decreasing probability
         print(eachPrediction , " : " , eachProbability)
@@ -75,13 +77,17 @@ def image_recognition(image):
     for index,row in dataSet.iterrows():
         poisonous = row['poisonous']
         classValue = row['class_id']
+        country = row['country']
+        scientific = row['snake_sub_family']
         if classValue == int(predictions[0]):
             if poisonous == 1: 
-                res = "Venomous"
+                resPois = "Venomous"
             else:
-                res = "Not Venomous"
+                resPois = "Not Venomous"
+            resCountry = str(country)
+            resScientific = str(scientific)
             break
-    print(res) 
-    return [snake_dict[int(predictions[0])], res, description]
+     
+    return [snake_dict[int(predictions[0])], resPois, description, resCountry, scientific]
 
 
