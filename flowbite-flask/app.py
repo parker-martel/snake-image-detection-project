@@ -42,8 +42,6 @@ def upload_image():
 			os.remove(prev_image)
 		filename = photos.save(form.photo.data)
 		file_url = url_for('get_file', filename=filename)
-		dir = f"{os.getcwd()}/uploads"
-		# if len(os.listdir(f'{dir}')) > 2:
 		# 	pass
 		print("\n\nLOADER: ", f"{os.getcwd()}{file_url}")
 		loader = f"{os.getcwd()}{file_url}" # Add correct path to image
