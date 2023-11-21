@@ -88,6 +88,6 @@ def image_recognition(image):
             resScientific = str(scientific)
             break
      
-    return [snake_dict[int(predictions[0])], resPois, description, resCountry, scientific]
+    return [snake_dict[int(predictions[0])], resPois, description, resCountry, resScientific]
 
 
