@@ -77,17 +77,17 @@ def image_recognition(image):
     for index,row in dataSet.iterrows():
         poisonous = row['poisonous']
         classValue = row['class_id']
-        country = row['country']
+   
         scientific = row['snake_sub_family']
         if classValue == int(predictions[0]):
             if poisonous == 1: 
                 resPois = "Venomous"
             else:
                 resPois = "Not Venomous"
-            resCountry = str(country)
+        
             resScientific = str(scientific)
             break
      
-    return [snake_dict[int(predictions[0])], resPois, description, resCountry, scientific]
+    return [snake_dict[int(predictions[0])], resPois, description,  resScientific]
 
 

@@ -4,11 +4,11 @@ from dotenv import load_dotenv
 
 def snakeDescription(snake):   
     load_dotenv()
-    # Replace 'your-api-key' with your actual OpenAI API key
+   
     apiKey = os.getenv("api_key")
 
     openai.api_key = apiKey
-
+    response = []
     # Define the conversation for the chat-based API
     conversation = [
         {"role": "user", "content": f"Generate a summary of the {snake}. 2 sentences."},
@@ -24,7 +24,7 @@ def snakeDescription(snake):
     except Exception as e:
     
         print(f'An error occurred: {e}')
-    
+
     
     return response['choices'][0]['message']['content']
 
